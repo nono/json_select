@@ -1,0 +1,3 @@
+[submodule "JSONSelect"]
+	path = JSONSelect
+	url = https://github.com/lloyd/JSONSelect.git
