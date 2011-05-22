@@ -11,7 +11,7 @@ describe JSONSelect::Universal do
       "bar" => [1, [2]],
       "baz" => { "qux" => { "quux" => "courge" } }
     }
-    expected = [input, input["baz"], { "quux" => "courge" }, "courge", "42", [1, [2]], 1, [2], 2]
+    expected = [input, "42", [1, [2]], 1, [2], 2, input["baz"], { "quux" => "courge" }, "courge"]
     results = []
     JSONSelect::Universal.new.match(input) { |x| results << x }
     results.must_equal expected
