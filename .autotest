@@ -5,8 +5,8 @@ Autotest.add_hook :initialize do |at|
   at.testlib = 'minitest/spec'
 
   at.clear_mappings
-  at.add_mapping(%r%^lib/json_select/(.*)\.rb$%) { |_,m| "spec/#{m}_spec.rb" }
   at.add_mapping(%r%^lib/json_select\.rb$%) { "spec/json_select_spec.rb" }
+  at.add_mapping(%r%^lib/json_select/.*\.rb$%) { |f,_| "spec/#{File.basename f, '.rb'}_spec.rb" }
   at.add_mapping(%r%^spec/.*_spec\.rb$%) { |filename,_| filename }
 
   at.add_exception 'coverage.info'

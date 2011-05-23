@@ -1,12 +1,15 @@
 require "yajl/json_gem"
+require "parslet"
 
 
 class JSONSelect
   VERSION = "0.0.1"
 
   autoload :Group,          "json_select/group"
+  autoload :Parser,         "json_select/parser"
   autoload :Selector,       "json_select/selector"
   autoload :SelectorsGroup, "json_select/selectors_group"
+  autoload :Transformer,    "json_select/transformer"
   autoload :TypeSelector,   "json_select/type_selector"
   autoload :Universal,      "json_select/universal"
 
@@ -25,19 +28,9 @@ class JSONSelect
 
   def self.compile(selector)
     return selector if Selector === selector
-    groups = selector.split(",").map { |str| build_group(str) }
-    SelectorsGroup.new(groups)
-  end
-
-  def self.build_group(str)
-    selectors = str.split(" ").map { |str| build_simple_selector(str) }
-    Group.new(selectors)
-  end
-
-  def self.build_simple_selector(str)
-    case str
-    when "*" then Universal.new
-    else          TypeSelector.new(str)
-    end
+    parser = JSONSelect::Parser.new
+    parser = parser.selectors_group # FIXME
+    trans  = JSONSelect::Transformer.new
+    trans.apply parser.parse(selector)
   end
 end

@@ -26,23 +26,6 @@ describe JSONSelect do
   end
 
   describe "Compiling selectors" do
-    it "builds a simple selector" do
-      simple = JSONSelect.build_simple_selector("*")
-      simple.must_be_kind_of JSONSelect::Universal
-      simple = JSONSelect.build_simple_selector("number")
-      simple.must_be_kind_of JSONSelect::TypeSelector
-      simple.type.must_equal "number"
-    end
-
-    it "builds a group" do
-      group = JSONSelect.build_group("number")
-      group.must_be_kind_of JSONSelect::Group
-      group.sequence.length.must_equal 1
-      simple = group.sequence.first
-      simple.must_be_kind_of JSONSelect::TypeSelector
-      simple.type.must_equal "number"
-    end
-
     it "compiles a selector" do
       groups = JSONSelect.compile("number")
       groups.must_be_kind_of JSONSelect::SelectorsGroup

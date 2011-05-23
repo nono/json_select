@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.files            = Dir["MIT-LICENSE", "README.md", "Gemfile", "lib/**/*.rb"]
   s.require_paths    = ["lib"]
   s.rubygems_version = %q{1.3.7}
+  s.add_dependency "parslet", "~>1.2"
   s.add_dependency "yajl-ruby", "~>0.8"
   s.add_development_dependency "minitest", "~>2.0"
 end
