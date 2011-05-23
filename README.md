@@ -4,16 +4,9 @@ JSONSelect
 A ruby version of [JSONSelect](https://github.com/lloyd/JSONSelect),
 an experimental selector language for JSON.
 
-
-Issues or Suggestions
----------------------
-
-Found an issue or have a suggestion? Please report it on
-[Github's issue tracker](http://github.com/nono/json_select/issues).
-
-If you wants to make a pull request, please check the specs before:
-
-    ./spec/json_select_spec.rb
+[Simon Menke](https://github.com/fd) made an alternative implementation:
+[json_select](https://github.com/fd/json_select).
+You should use his version: it's more complete and I won't maintain mine.
 
 
 Credits
